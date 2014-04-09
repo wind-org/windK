@@ -1,0 +1,3 @@
+1.user->form.jsp,issue: role checkboxes can not be checked
+2.shiro authentication, issue: user with role=user still can update info
+3.cxf web service, issue: the client can not be created and test the service

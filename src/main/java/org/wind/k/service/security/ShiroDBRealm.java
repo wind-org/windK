@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.wind.k.entity.Role;
 import org.wind.k.entity.User;
 import org.wind.k.service.user.IUserService;
-import org.wind.k.to.ShiroUser;
 
 public class ShiroDBRealm extends AuthorizingRealm{
 

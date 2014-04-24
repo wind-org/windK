@@ -1,4 +1,4 @@
-package org.wind.k.to;
+package org.wind.k.service.security;
 
 import java.io.Serializable;
 

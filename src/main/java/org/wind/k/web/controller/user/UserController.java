@@ -40,8 +40,8 @@ public class UserController {
 	private static Map<String,String> allStatus = Maps.newHashMap();
 	
 	static{
-		allStatus.put("enabled", "youxiao");
-		allStatus.put("disabled", "wuxiao");
+		allStatus.put("enabled", "enabled");
+		allStatus.put("disabled", "disabled");
 	}
 	
 	@Autowired

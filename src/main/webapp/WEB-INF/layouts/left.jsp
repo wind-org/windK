@@ -9,11 +9,11 @@
 	</div>
 	<h1>Part II</h1>
 	<div class="submenu">
-		<a id="web-tab" href="${ctx}/story/web">Web演示</a>
-		<a id="webservice-tab"href="${ctx}/story/webservice">WebService演示</a>
-		<a id="hystrix-tab" href="${ctx}/hystrix">Hystrix演示</a>
-		<a id="jmx-tab" href="${ctx}/story/jmx">JMX演示</a>
-		<a id="log-tab" href="${ctx}/story/log">日志高级演示</a>
+		<a id="web-tab" href="${ctx}/story/web">Common Functionality</a>
+		<a id="webservice-tab"href="${ctx}/story/webservice">WebService</a>
+		<a id="hystrix-tab" href="${ctx}/hystrix">Hystrix</a>
+		<a id="jmx-tab" href="${ctx}/story/jmx">JMX</a>
+		<a id="log-tab" href="${ctx}/story/log">Log</a>
 		<a id="monitor-tab" href="${ctx}/story/monitor">性能监控演示</a>
 	</div>
 	<h1>Part III</h1>

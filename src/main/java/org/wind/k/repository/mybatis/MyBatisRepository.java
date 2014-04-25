@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * it's good for scannning the mybatis Dao class by MapperScannerConfigurer
+ * it's used for scannning the mybatis Dao class by MapperScannerConfigurer
  * @author stephen
  *
  */

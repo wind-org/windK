@@ -2,6 +2,8 @@ package org.wind.k.web.servlet.staticdownload;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.zip.GZIPOutputStream;
 
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletException;
@@ -32,11 +34,10 @@ public class StaticContentDownloadServlet extends HttpServlet {
 		"application/xhtml+xml","application/x-javascript","application/json"};
 	//the minimum size of compressed content
 	private static final int MINI_COMPRESSION_SIZE = 512; 
-	
+	//mime type map
 	private MimetypesFileTypeMap mimetypesFileTypeMap;
 	
 	private ApplicationContext applicationContext;
-	
 	
 	
 	public void init() throws ServletException {
@@ -48,20 +49,39 @@ public class StaticContentDownloadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//resource path
-		String contentPath = request.getParameter("contentPath");
-		if(StringUtils.isNoneBlank(contentPath)){
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "The content path parameter is required");
-			return;
-		}
-		ContentInfo contentInfo = getContentInfo(contentPath);
-		//no modified
-		if(!ServletTools.checkIfModifiedSince(request, response, contentInfo.getLastModified())){
-			return;
-		}
-		ServletTools.setExpiresHeader(response,ServletTools.ONE_YEAR_SECONDS);
+		OutputStream output = null;
 		
-		
+		try{
+			//resource path
+			String contentPath = request.getParameter("contentPath");
+			if(StringUtils.isNoneBlank(contentPath)){
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "The content path parameter is required");
+				return;
+			}
+			ContentInfo contentInfo = getContentInfo(contentPath);
+			//no modified
+			if(!ServletTools.checkIfModifiedSince(request, response, contentInfo.getLastModified())
+					|| !ServletTools.checkIfNoneMatchHeader(request, response, contentInfo.getEtag())){
+				return;
+			}
+			ServletTools.setExpiresHeader(response,ServletTools.ONE_YEAR_SECONDS);
+			ServletTools.setLastModifiedHeader(response, contentInfo.getLastModified());
+			response.setContentType(contentInfo.getMimeType());
+			ServletTools.setContentDispositionHeader(response,contentInfo.getFileName());
+			
+			//build compression outputStream
+			if(ServletTools.checkAcceptEncoding(request,"gzip") && contentInfo.isNeedCompression()){
+				output = buildCompressionOutputStream(response);
+						
+			//get normal outputSteam
+			}else{
+				response.setContentLength(contentInfo.getLength());
+				output = response.getOutputStream();
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	private ContentInfo getContentInfo(String contentPath){
@@ -75,8 +95,9 @@ public class StaticContentDownloadServlet extends HttpServlet {
 			contentInfo.setFile(file);
 			contentInfo.setFileName(file.getName());
 			contentInfo.setLastModified(file.lastModified());
-			contentInfo.setLength(file.length());
+			contentInfo.setLength((int)file.length());
 			contentInfo.setMimeType(mimetypesFileTypeMap.getContentType(file.getName()));
+			contentInfo.setEtag("\"f"+file.lastModified()+"\"");
 			if(file.length() >= MINI_COMPRESSION_SIZE && ArrayUtils.contains(MIME_TYPE,contentInfo.getMimeType())){
 				contentInfo.setNeedCompression(true);
 			}else{
@@ -86,6 +107,11 @@ public class StaticContentDownloadServlet extends HttpServlet {
 		return contentInfo;
 	}
 	
+	private OutputStream buildCompressionOutputStream(HttpServletResponse response) throws IOException{
+		response.setHeader("Content-Encoding", "gzip");
+		response.setHeader("Vary", "Accept-Encoding");
+		return new GZIPOutputStream(response.getOutputStream());
+	}
 	
 	
 	

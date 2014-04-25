@@ -10,7 +10,7 @@ public class ContentInfo {
 	
 	private String fileName;
 	
-	private long length;
+	private int length;
 	
 	private String mimeType; 
 	
@@ -44,11 +44,11 @@ public class ContentInfo {
 		this.fileName = fileName;
 	}
 
-	public long getLength() {
+	public int getLength() {
 		return length;
 	}
 
-	public void setLength(long length) {
+	public void setLength(int length) {
 		this.length = length;
 	}
 

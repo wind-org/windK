@@ -1,7 +1,9 @@
 package org.wind.k.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.TreeMap;
 
 import javax.servlet.ServletRequest;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.net.HttpHeaders;
 
@@ -75,11 +78,87 @@ public class ServletTools {
 		return true;
 	}
 	
+	/**
+	 * check if the HttpHeaders.If-None-Match equals Etag. 
+	 * if it does, the server will send response code 304 not 200 and do not return content. 
+	 * and then the browser will load the file from local cache
+	 * 
+	 * @param request
+	 * @param response
+	 * @param Etag
+	 */
+	public static boolean checkIfNoneMatchHeader(HttpServletRequest request,HttpServletResponse response,String Etag){
+		String headerValue = request.getHeader(HttpHeaders.IF_NONE_MATCH);
+		boolean flag = false;
+		if(headerValue != null){
+			if(!"*".equals(headerValue)){
+				String[] values =  headerValue.split(",");
+				if(values!= null && values.length > 0 ){
+					for(int i = 0; i<values.length; i++){
+						if(values[i].trim().equals(Etag)){
+							flag = true;
+						}
+					}
+				}
+			}else{
+				flag = true;
+			}
+			if(flag == true){
+				response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+				response.setHeader(HttpHeaders.ETAG, Etag);
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * check if the encodingType is in HttpHeaders.Accept-Encoding
+	 * 
+	 * @param request
+	 * @param encodingType
+	 * @return
+	 */
+	public static boolean checkAcceptEncoding(HttpServletRequest request,String encodingType){
+		// Http1.1 header
+		String acceptEncoding  = request.getHeader("Accept-Encoding");
+		return StringUtils.contains(acceptEncoding, encodingType);
+	}
+	
+	/**
+	 * set expire time
+	 * @param response
+	 * @param expireSeconds
+	 */
 	public static void setExpiresHeader(HttpServletResponse response,long expireSeconds){
 		// Http 1.0 header, set a fix expires date.
 		response.setDateHeader(HttpHeaders.EXPIRES, System.currentTimeMillis() + (expireSeconds * 1000));
 		// Http 1.1 header, set a time after now.
 		response.setHeader(HttpHeaders.CACHE_CONTROL, "private, max-age=" + expireSeconds);
+	}
+	
+	/**
+	 * set last modified date
+	 * @param response
+	 * @param lastModifiedDate
+	 */
+	public static void setLastModifiedHeader(HttpServletResponse response,long lastModifiedDate){
+		response.setDateHeader(HttpHeaders.LAST_MODIFIED, lastModifiedDate);
+	}
+	
+	/**
+	 * set download file name
+	 * @param response
+	 * @param fileName
+	 */
+	public static void setContentDispositionHeader(HttpServletResponse response,String fileName){
+		try {
+			String encodedName = new String(fileName.getBytes(),"ISO8859-1");
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "from wind, file:\"" + encodedName + "\"");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

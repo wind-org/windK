@@ -9,7 +9,7 @@
 	</div>
 	<h1>Part II</h1>
 	<div class="submenu">
-		<a id="web-tab" href="${ctx}/story/web">Common Functionality</a>
+		<a id="web-tab" href="${ctx}/tools">Web Tools</a>
 		<a id="webservice-tab"href="${ctx}/story/webservice">WebService</a>
 		<a id="hystrix-tab" href="${ctx}/hystrix">Hystrix</a>
 		<a id="jmx-tab" href="${ctx}/story/jmx">JMX</a>

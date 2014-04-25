@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
@@ -78,6 +79,8 @@ public class StaticContentDownloadServlet extends HttpServlet {
 				response.setContentLength(contentInfo.getLength());
 				output = response.getOutputStream();
 			}
+			FileUtils.copyFile(contentInfo.getFile(), output);
+			output.flush();
 			
 		}catch(Exception e){
 			e.printStackTrace();

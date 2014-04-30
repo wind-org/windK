@@ -12,9 +12,9 @@
 </head>
 <body>
 		<h1>Web Tools</h1>
-		<h2>Static Content Download</h2>
+		<h5>1.Static Content Download</h5>
 		<p>
-			<a href="${ctx}/staticContent?contentPath="></a>
+			&nbsp;&nbsp;&nbsp;<a href="${ctx}/tools/staticContent?contentPath=static/images/eye.jpg">Click and get an image from server !</a>
 		</p>
 		<h2></h2>
 </body>

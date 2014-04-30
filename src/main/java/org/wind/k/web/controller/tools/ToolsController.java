@@ -1,6 +1,8 @@
 package org.wind.k.web.controller.tools;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
@@ -10,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Date 2014-4-25
  *
  */
+@Controller
 public class ToolsController {
 	
-	@RequestMapping("/tools")
-	String toToolsMainPage(){
+	@RequestMapping( value = "/tools",method = RequestMethod.GET)
+	public String toToolsMainPage(){
 		return "tools/main";
 	}
 	

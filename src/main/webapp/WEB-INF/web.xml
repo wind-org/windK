@@ -105,15 +105,16 @@
   </servlet-mapping>
   
   <!-- Static Content Downlaod -->
+  <!-- 
   <servlet>
   	<servlet-name>StaticContentDownloadServlet</servlet-name>
   	<servlet-class>org.wind.k.web.servlet.staticdownload.StaticContentDownloadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>StaticContentDownloadServlet</servlet-name>
-  	<url-pattern>/staticContent/*</url-pattern>
+  	<url-pattern>/tools/staticContent/*</url-pattern>
   </servlet-mapping>
-  
+   -->
   <!-- Servlets end --> 
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>

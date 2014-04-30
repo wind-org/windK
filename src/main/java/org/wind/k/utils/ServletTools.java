@@ -154,7 +154,7 @@ public class ServletTools {
 	public static void setContentDispositionHeader(HttpServletResponse response,String fileName){
 		try {
 			String encodedName = new String(fileName.getBytes(),"ISO8859-1");
-			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "from wind, file:\"" + encodedName + "\"");
+			response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + encodedName + "\"");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

@@ -414,7 +414,7 @@
 				</exclusions>
 			</dependency>
 
-			<!-- 重新定义Java XPath Engine到最新版，避免旧版那些不必要的依赖 -->
+			<!-- redefine Java XPath Engine, to avoid the confliction with old dependences -->
 			<dependency>
 				<groupId>jaxen</groupId>
 				<artifactId>jaxen</artifactId>
@@ -788,7 +788,7 @@
 					</dependencies>
 				</plugin>
 
-				<!-- 增加更多的Source和Test Source目录插件 -->
+				<!-- more Source and Test Source -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>

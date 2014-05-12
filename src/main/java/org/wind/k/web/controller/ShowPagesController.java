@@ -1,4 +1,4 @@
-package org.wind.k.web.controller.tools;
+package org.wind.k.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 @Controller
-public class ToolsController {
+public class ShowPagesController {
 	
 	@RequestMapping( value = "/tools",method = RequestMethod.GET)
-	public String toToolsMainPage(){
-		return "tools/main";
+	public String toToolsPage(){
+		return "showpages/tools";
+	}
+	
+	@RequestMapping(value = "/webservice" ,method = RequestMethod.GET)
+	public String toWebServicePage(){
+		return "showpages/webservice";
 	}
 	
 }

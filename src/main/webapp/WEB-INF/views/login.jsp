@@ -8,7 +8,7 @@
 <head>
 	<title>Sign in</title>
 	<script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
-	<script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_zh.js" type="text/javascript"></script>
+	<script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_en.js" type="text/javascript"></script>
 	<link href="${ctx}/static/jquery-validation/1.11.1/validate.css" type="text/css" rel="stylesheet" />
 </head>
 

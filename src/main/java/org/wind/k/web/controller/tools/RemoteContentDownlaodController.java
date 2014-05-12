@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.wind.k.utils.ServletTools;
 
 /**
@@ -41,7 +42,7 @@ public class RemoteContentDownlaodController {
 	private static CloseableHttpClient httpClient;
 
 	
-	@RequestMapping(value = "/tools/remoteContent")
+	@RequestMapping(value = "/tools/remoteContent",method = RequestMethod.POST)
 	public void getRemoteContent(HttpServletRequest request, HttpServletResponse response,
 			String remoteUrl,String type){
 		try{

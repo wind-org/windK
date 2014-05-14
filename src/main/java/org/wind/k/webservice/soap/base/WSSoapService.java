@@ -1,11 +1,11 @@
-package org.wind.k.webservice.cxf.base;
+package org.wind.k.webservice.soap.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class WSCXFSevice {
+public class WSSoapService {
 	
-	private static Logger logger = LoggerFactory.getLogger(WSCXFSevice.class); 
+	private static Logger logger = LoggerFactory.getLogger(WSSoapService.class); 
 	
 	protected <T extends WSResult> T handleException(T result,Exception e,String massage){
 		logger.error(massage, e);

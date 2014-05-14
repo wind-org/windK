@@ -16,7 +16,9 @@
 	<!-- shiro -->
 	<import resource="security/shiro-context.xml" />
 	<!-- Apache CXF soap web service -->
-	<import resource="webservice/cxf-server.xml"/>
+	<import resource="webservice/soap-server.xml"/>
+	<!-- Apache CXF jaxrs for restful web service -->
+	<import resource="webservice/jaxrs-server.xml"/>
 	
 	<!-- aspectj -->
 	<aop:aspectj-autoproxy proxy-target-class="true"/>

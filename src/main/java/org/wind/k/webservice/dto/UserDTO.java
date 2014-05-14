@@ -1,10 +1,10 @@
-package org.wind.k.webservice.cxf.dto;
+package org.wind.k.webservice.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.wind.k.webservice.cxf.base.WSConstants;
+import org.wind.k.webservice.soap.base.WSConstants;
 
 /**
  * 
@@ -22,7 +22,7 @@ public class UserDTO {
 	private String loginName;
 	private String name;
 	private String email;
-	private TeamDTO team;
+	private Long teamId;
 
 	public Long getId() {
 		return id;
@@ -56,12 +56,12 @@ public class UserDTO {
 		email = value;
 	}
 
-	public TeamDTO getTeam() {
-		return team;
+	public Long getTeamId() {
+		return teamId;
 	}
 
-	public void setTeam(TeamDTO team) {
-		this.team = team;
+	public void setTeamId(Long teamId) {
+		this.teamId = teamId;
 	}
 
 	public String toString() {

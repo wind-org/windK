@@ -15,9 +15,16 @@
 </head>
 <body>
 		<h1>Web Tools</h1>
-		<h5>1.SOAP Web Service Based on CXF </h5>
+		<h5>1.SOAP Web Service by CXF </h5>
 		<div>
-			&nbsp;&nbsp;&nbsp;<a href="${ctx}/cxf/userCXFService">get wsdl file.</a>
+			&nbsp;&nbsp;&nbsp;>>&nbsp;<a href="${ctx}/cxf/soap/userSoapService"> get user wsdl file.</a>
+		</div>
+		<h5>2.Jaxrs Restful Web Service by CXF </h5>
+		<div>
+			&nbsp;&nbsp;&nbsp;>>&nbsp;<a href="${ctx}/cxf/user/1.xml"> get user xml file.</a>
+		</div>
+		<div>
+			&nbsp;&nbsp;&nbsp;>>&nbsp;<a href="${ctx}/cxf/user/1.json"> get user json file.</a>
 		</div>
 </body>
 </html>

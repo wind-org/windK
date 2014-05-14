@@ -1,4 +1,4 @@
-package org.wind.k.webservice.cxf.base;
+package org.wind.k.webservice.soap.base;
 
 
 public class WSConstants {

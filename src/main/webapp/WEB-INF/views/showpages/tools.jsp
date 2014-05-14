@@ -66,7 +66,7 @@
 		<h1>Web Tools</h1>
 		<h5>1.Static Content Download</h5>
 		<div>
-			&nbsp;&nbsp;&nbsp;<a href="${ctx}/tools/staticContent?contentPath=static/images/eye.jpg">Click and get an image from server !</a>
+			&nbsp;&nbsp;&nbsp;>>&nbsp;<a href="${ctx}/tools/staticContent?contentPath=static/images/eye.jpg">Click and get an image from server !</a>
 		</div>
 		<h5>2.Remote Content Download</h5>
 		<div>

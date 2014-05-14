@@ -1,18 +1,19 @@
-package org.wind.k.webservice.cxf.service;
+package org.wind.k.webservice.soap.service;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.wind.k.webservice.soap.service.IUserSoapService;
 
 
-public class UserCXFServiceImplTest {
+public class UserSoapServiceImplTest {
 	
-	public static UserCXFServiceImplTest ust = new UserCXFServiceImplTest();
-	private IUserCXFService client;
+	public static UserSoapServiceImplTest ust = new UserSoapServiceImplTest();
+	private IUserSoapService client;
 	
-	private UserCXFServiceImplTest(){
+	private UserSoapServiceImplTest(){
 		ApplicationContext clientContext = new ClassPathXmlApplicationContext(  
-                new String[]{"org/wind/k/webservice/cxf/client/cxf-client.xml"});  
-        client = (IUserCXFService) clientContext.getBean("userServiceClient"); 
+                new String[]{"org/wind/k/webservice/soap/client/soap-client.xml"});  
+        client = (IUserSoapService) clientContext.getBean("userServiceClient"); 
 	}
 	
 

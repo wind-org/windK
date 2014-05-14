@@ -1,4 +1,4 @@
-package org.wind.k.webservice.cxf.base;
+package org.wind.k.webservice.soap.base;
 
 import javax.xml.bind.annotation.XmlType;
 

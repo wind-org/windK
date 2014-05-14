@@ -1,4 +1,4 @@
-package org.wind.k.webservice.cxf.dto;
+package org.wind.k.webservice.dto;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.wind.k.webservice.cxf.base.WSConstants;
+import org.wind.k.webservice.soap.base.WSConstants;
 
 import com.google.common.collect.Lists;
 

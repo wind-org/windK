@@ -1,11 +1,11 @@
-package org.wind.k.webservice.cxf.service;
+package org.wind.k.webservice.soap.service;
 
 import javax.jws.WebService;
 
-import org.wind.k.webservice.cxf.response.UserResult;
+import org.wind.k.webservice.soap.response.UserResult;
 
 @WebService
-public interface IUserCXFService {
+public interface IUserSoapService {
 
 	public UserResult getUser(Long id);
 	

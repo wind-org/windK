@@ -1,10 +1,10 @@
-package org.wind.k.webservice.cxf.response;
+package org.wind.k.webservice.soap.response;
 
 import javax.xml.bind.annotation.XmlType;
 
-import org.wind.k.webservice.cxf.base.WSConstants;
-import org.wind.k.webservice.cxf.base.WSResult;
-import org.wind.k.webservice.cxf.dto.TeamDTO;
+import org.wind.k.webservice.dto.TeamDTO;
+import org.wind.k.webservice.soap.base.WSConstants;
+import org.wind.k.webservice.soap.base.WSResult;
 
 /***
  * 

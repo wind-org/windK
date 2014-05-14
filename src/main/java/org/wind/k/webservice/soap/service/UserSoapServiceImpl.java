@@ -1,4 +1,4 @@
-package org.wind.k.webservice.cxf.service;
+package org.wind.k.webservice.soap.service;
 
 import javax.jws.WebService;
 
@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.wind.k.entity.User;
 import org.wind.k.repository.mybatis.UserMyBatisDao;
 import org.wind.k.utils.BeanMapper;
-import org.wind.k.webservice.cxf.base.WSCXFSevice;
-import org.wind.k.webservice.cxf.base.WSConstants;
-import org.wind.k.webservice.cxf.dto.UserDTO;
-import org.wind.k.webservice.cxf.response.UserResult;
+import org.wind.k.webservice.dto.UserDTO;
+import org.wind.k.webservice.soap.base.WSSoapService;
+import org.wind.k.webservice.soap.response.UserResult;
 
 //the annotation @WebService let us know which interface we need to create WSDL
-@WebService(endpointInterface = "org.wind.k.webservice.cxf.service.IUserCXFService",serviceName="userCXFService")
-public class UserCXFServiceImpl extends WSCXFSevice implements IUserCXFService {
+@WebService(endpointInterface = "org.wind.k.webservice.soap.service.IUserSoapService",serviceName="userSoapService")
+public class UserSoapServiceImpl extends WSSoapService implements IUserSoapService {
 	
 	@Autowired
 	private PropertiesConfiguration webServiceConfig;
@@ -23,7 +22,7 @@ public class UserCXFServiceImpl extends WSCXFSevice implements IUserCXFService {
 	@Autowired
 	private UserMyBatisDao userDao;
 	
-	public UserCXFServiceImpl(PropertiesConfiguration webServiceConfig){
+	public UserSoapServiceImpl(PropertiesConfiguration webServiceConfig){
 		this.webServiceConfig = webServiceConfig;
 	}
 	

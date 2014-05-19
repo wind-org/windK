@@ -9,12 +9,12 @@ import org.wind.k.entity.User;
 import org.wind.k.repository.mybatis.UserMyBatisDao;
 import org.wind.k.utils.BeanMapper;
 import org.wind.k.webservice.dto.UserDTO;
-import org.wind.k.webservice.soap.base.WSSoapService;
+import org.wind.k.webservice.soap.base.BaseSoapService;
 import org.wind.k.webservice.soap.response.UserResult;
 
 //the annotation @WebService let us know which interface we need to create WSDL
 @WebService(endpointInterface = "org.wind.k.webservice.soap.service.IUserSoapService",serviceName="userSoapService")
-public class UserSoapServiceImpl extends WSSoapService implements IUserSoapService {
+public class UserSoapServiceImpl extends BaseSoapService implements IUserSoapService {
 	
 	@Autowired
 	private PropertiesConfiguration webServiceConfig;

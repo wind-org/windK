@@ -57,7 +57,7 @@ public class UserJaxRsService {
 	@Path("/{id}.json")
 	@Produces("application/json;charset=UTF-8")
 	public UserDTO getUserAsJson(@PathParam("id") Long id){
-		UserDTO userDTo = null;
+		UserDTO userDTO = null;
 		try{
 			User user = userService.getUser(id);
 			if(user == null){
@@ -65,15 +65,14 @@ public class UserJaxRsService {
 				logger.warn(msg);
 				throw buildException(Status.NOT_FOUND,msg);
 			}
-			userDTo = new UserDTO();
-			BeanUtils.copyProperties(userDTo, user);
-			userDTo.setTeamId(user.getTeam().getId());
+			userDTO = new UserDTO();
+			BeanUtils.copyProperties(userDTO, user);
+			userDTO.setTeamId(user.getTeam().getId());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return userDTo;
+		return userDTO;
 	}
-	
 	private WebApplicationException buildException(Status status,String message){
 		return new WebApplicationException(Response.status(status).entity(message).type("text/plain; charset=UTF-8").build());
 	}

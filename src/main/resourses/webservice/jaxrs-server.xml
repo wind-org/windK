@@ -7,7 +7,7 @@
 
 	<description>Apache CXF for RESTful WebServices</description>
 	
-	<jaxrs:server>
+	<jaxrs:server id="serviceContainer" address="/jaxrs">
 		<jaxrs:serviceBeans>
 			<ref bean="userJaxRsService"/>
 		</jaxrs:serviceBeans>

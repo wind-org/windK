@@ -25,4 +25,8 @@ public class ShowPagesController {
 		return "showpages/webservice";
 	}
 	
+	@RequestMapping(value = "/jms" ,method = RequestMethod.GET)
+	public String toJms(){
+		return "showpages/emailByJms";
+	}
 }

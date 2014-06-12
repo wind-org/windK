@@ -11,20 +11,15 @@
 	<div class="submenu">
 		<a id="web-tab" href="${ctx}/tools">Web Tools</a>
 		<a id="webservice-tab"href="${ctx}/webservice">WebService</a>
-		<a id="hystrix-tab" href="${ctx}/hystrix">Hystrix</a>
-		<a id="jmx-tab" href="${ctx}/story/jmx">JMX</a>
-		<a id="log-tab" href="${ctx}/story/log">Log</a>
-		<a id="monitor-tab" href="${ctx}/story/monitor">性能监控演示</a>
+		<a id="jms-tab" href="${ctx}/jms">JMS&Email</a>
+		<a id="monitor-tab" href="${ctx}/story/monitor">Performance Monitoring</a>
 	</div>
 	<h1>Part III</h1>
 	<div class="submenu">
-		<a id="persistence-tab" href="${ctx}/story/persistence">持久化高级演示</a>
-		<a id="jms-tab" href="${ctx}/story/jms">JMS演示</a>
-		<a id="reids-tab" href="${ctx}/story/redis">Redis演示</a>
-		<a id="cache-tab" href="${ctx}/story/cache">Cache演示</a>
-		<a id="schedule-tab" href="${ctx}/story/schedule">定时任务演示</a>
-		<a id="security-tab" href="${ctx}/story/security">安全高级演示</a>
-		<a id="utilizes-tab"href="${ctx}/story/utilizes">工具类演示</a>
-		<a id="executablewar-tab"href="${ctx}/story/executablewar">可运行war包演示</a>
+		<a id="cache-tab" href="${ctx}/story/cache">Cache</a>
+		<a id="security-tab" href="${ctx}/story/security">Security</a>
+		<a id="schedule-tab" href="${ctx}/story/schedule">Schedule</a>
+		<a id="persistence-tab" href="${ctx}/story/persistence">Persistence</a>
+		<a id="reids-tab" href="${ctx}/story/redis">Redis</a>
 	</div>
 </div>

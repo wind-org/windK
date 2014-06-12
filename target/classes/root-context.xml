@@ -19,6 +19,10 @@
 	<import resource="webservice/soap-server.xml"/>
 	<!-- Apache CXF jaxrs for restful web service -->
 	<import resource="webservice/jaxrs-server.xml"/>
+	<!-- jms -->
+	<import resource="jms/jms-context.xml"/>
+	<!-- email -->
+	<import resource="email/email-context.xml"/>
 	
 	<!-- aspectj -->
 	<aop:aspectj-autoproxy proxy-target-class="true"/>

@@ -30,7 +30,8 @@
 			$("#urlForm").validate();
 			$("#fileform").validate();
 		});
-		   
+		 
+		//file upload script
 		$('#fileform').ajaxForm({
 		    beforeSend: function() {
 		    	$('#status').html("");
@@ -58,7 +59,33 @@
 				
 			}
 		});     
-
+		
+		var remoteUrl = "http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?";
+		
+		//jsonp mashup script
+		function getMashupContent(){
+			/*	$.ajax({
+				url:remoteUrl,
+				dataType:jsonp,
+				success:function(data){
+					//$("#remoteContent").html(data);
+					$.each(data.items,function(i, item) {
+				    	$("<img/>").attr("src", item.media.m).appendTo("#images");
+				        if (i == 3) return false;
+				     });
+				},
+				timeout:3000
+			});  	*/
+		
+			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?",
+			function(data) {
+	            $.each(data.items,
+	            function(i, item) {
+	                $("<img/>").attr("src", item.media.m).appendTo("#images");
+	                if (i == 2) return false;
+	            });
+			});
+		}
 		
 	</script>	
 </head>
@@ -71,11 +98,11 @@
 		<h5>2.Remote Content Download</h5>
 		<div>
 			<form action="${ctx}/tools/remoteContent" method="post" name="urlForm" class="form-horizontal" id="urlForm">
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="radio" name="type" value="Y" checked="checked"> By Apache Http Client &nbsp; &nbsp;<input type="radio" name="type" value="N"> By JDK UrlConnection<br>
+			&nbsp; <input type="radio" name="type" value="Y" checked="checked"> By Apache Http Client &nbsp; &nbsp;<input type="radio" name="type" value="N"> By JDK UrlConnection<br>
 			<div> URL:<input type="text" name="remoteUrl" id="remoteUrl" class="input-xxlarge required"><input type="submit" class="btn" id="sub_btn" value="submit" onclick=""/></div>
 			</form>
 		</div>
-		<h5>3.multiple Files Upload</h5>
+		<h5>3.Multiple Files Upload</h5>
 		<div>
 		    <!--  
 			<div class="progress">
@@ -95,6 +122,12 @@
 			    <input type="submit" value="Upload Files" class="btn"/>
 			    <div id="message" class="alert alert-success"><button data-dismiss="alert" class="close">×</button><span id="status"></span></div>
 			</form>
+		</div>
+		<h5>4.JSONP Mashup</h5>
+		
+		<div id="remoteContent" class="center">
+			<input type="button" class="btn" id="sub_btn" value="Click and Get Pictures" onclick="getMashupContent()"/>
+			<div id="images"></div>
 		</div>
 </body>
 </html>

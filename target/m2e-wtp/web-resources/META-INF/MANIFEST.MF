@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Build-Jdk: 1.7.0
-Built-By: ibsd_server
+Build-Jdk: 1.7.0_25
+Built-By: snail
 Created-By: Maven Integration for Eclipse
 

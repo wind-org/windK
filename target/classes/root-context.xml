@@ -22,8 +22,9 @@
 	<!-- jms -->
 	<import resource="jms/jms-context.xml"/>
 	<!-- email -->
-	<import resource="email/email-context.xml"/>
-	
+	<import resource="email/email-context.xml"/> 
+	<!-- mongo   -->
+	<import resource="repository/mongo-context.xml"/> 
 	<!-- aspectj -->
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	

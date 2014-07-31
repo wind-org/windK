@@ -60,24 +60,13 @@
 			}
 		});     
 		
-		var remoteUrl = "http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?";
+		
 		
 		//jsonp mashup script
-		function getMashupContent(){
-			/*	$.ajax({
-				url:remoteUrl,
-				dataType:jsonp,
-				success:function(data){
-					//$("#remoteContent").html(data);
-					$.each(data.items,function(i, item) {
-				    	$("<img/>").attr("src", item.media.m).appendTo("#images");
-				        if (i == 3) return false;
-				     });
-				},
-				timeout:3000
-			});  	*/
+		var remoteUrl = "http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?";
 		
-			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?",
+		function getMashupContent(){
+			$.getJSON(remoteUrl,
 			function(data) {
 	            $.each(data.items,
 	            function(i, item) {
@@ -86,6 +75,29 @@
 	            });
 			});
 		}
+		
+		function getMashupContent2() {
+			$.ajax({
+				url:remoteUrl, 
+				dataType:"jsonp"})
+				.done(function(data) {
+					 $.each(data.items,
+			            function(i, item) {
+			                $("<img/>").attr("src", item.media.m).appendTo("#images");
+			                if (i == 2) return false;
+			         });
+				});
+		}
+		
+		var contentUrl = "http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"+"/tools/mashup";
+		function getMashupContent3(){
+			$.ajax({
+				url:contentUrl,
+				dataType:"jsonp"}).done(function(data){
+					$("#contentDiv").html(data.content);
+				});
+		}
+		
 		
 	</script>	
 </head>
@@ -124,10 +136,13 @@
 			</form>
 		</div>
 		<h5>4.JSONP Mashup</h5>
-		
 		<div id="remoteContent" class="center">
-			<input type="button" class="btn" id="sub_btn" value="Click and Get Pictures" onclick="getMashupContent()"/>
-			<div id="images"></div>
+			<div><label>Sample 1: Get the latest cat pictures from Flickr. </label>
+			<input type="button" class="btn" id="sub_btn" value="Click" onclick="getMashupContent2()"/></div>
+			<div id="images" style="margin:10px"></div>
+			<div><label>Sample 2: Get info built by hand. </label>
+			<input type="button" class="btn" id="sub_btn" value="Click" onclick="getMashupContent3()"/></div>
+			<div id="contentDiv" style="margin:10px"></div>
 		</div>
 </body>
 </html>
